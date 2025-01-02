@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+import environ
 
+
+env = environ.Env()
+
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k98d&_@5p85zf*o=0pi5w+q(y5#bmd7=4b%s_(+c#aqe=!eh(!'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.0.4', '127.0.0.1', '192.168.0.2']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,12 +90,13 @@ WSGI_APPLICATION = 'shipper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / 'db.sqlite3',
+ #   }
+#}
+
 
 
 # Password validation
@@ -141,3 +148,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+
+DATABASES = {
+    'default' : dj_database_url.parse(env('DATABASE_URL'))
+}
