@@ -63,12 +63,12 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
-STORAGES = {
+#STORAGES = {
     # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+   # "staticfiles": {
+  #      "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+ #   },
+#}
 
 ROOT_URLCONF = 'shipper.urls'
 
