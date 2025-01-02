@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vercel-ouez.onrender.com']
+ALLOWED_HOSTS = ['dosojincargos.online','vercel-ouez.onrender.com']
 
 
 # Application definition
