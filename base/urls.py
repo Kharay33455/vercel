@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls import static
+
 
 app_name = 'base'
 urlpatterns = [
@@ -19,3 +22,8 @@ urlpatterns = [
     path('mailer/', views.mailer, name='mailer'),
     path('create-new', views.create_new, name='create_new'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns +=  static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns+= static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
