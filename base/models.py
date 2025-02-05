@@ -26,7 +26,7 @@ class Company_name(models.Model):
     name = models.CharField(max_length=20)
 
     def __str__(self):
-        return {self.name}
+        return f'{self.name}'
 
 class Shipper(models.Model):
     first_name = models.CharField(max_length=20)
