@@ -30,7 +30,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+debug = env('DEBUG')
+if debug == 'TRUE':
+    DEBUG = True
+else:
+    DEBUG = False
+
 
 #ALLOWED_HOSTS = ['dosojincargos.online','vercel-ouez.onrender.com']
 ALLOWED_HOSTS = ['*']
