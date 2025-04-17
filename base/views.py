@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from django.core.mail import send_mail
 
-import random
+import random , time , requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -343,3 +343,7 @@ def mailer(request):
     else:
         context = {'err':'Only admin users can access this page. Please log in with your admin account.'}
         return render(request, 'base/login.html', context)
+
+def pinger(request):
+    page = requests.get("https://dosojincargos.online")
+    time.sleep(random.randint(300, 600))
